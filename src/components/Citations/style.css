@@ -1,0 +1,29 @@
+h6{
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: -8px;
+    font-size: 24px;
+}
+
+.citation-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 24px auto;
+    height: 200px;
+    width: 40%;
+    padding: 24px 16px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 16px;
+    opacity: 0.5;
+}
+
+.citation-container > p{
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.citation-container > h3{
+    color: #fff;
+}
