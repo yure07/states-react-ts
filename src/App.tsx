@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Citation from "./components/Citations";
 import Header from "./components/Header";
 import Voted from './components/Voted';
+import { VotedProvider } from './context/VotedContext'
 
 const App = () => {
   const [showCitations, setShowCitations] = useState(false)
@@ -16,11 +17,11 @@ const App = () => {
   ]
 
   return (
-    <>
+    <VotedProvider>
       <Header onClick={() => setShowCitations(!showCitations)}/>
       {showCitations && <Citation data={data}/>}
       <Voted/>
-    </>
+    </VotedProvider>
   );
 }
 

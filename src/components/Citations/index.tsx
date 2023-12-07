@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
 import Button from '../Button';
 import './style.css'
+import { useVotedContext } from '../../context/VotedContext';
 
 interface CitationData{
     data: { author: string; citation: string; }[];
@@ -9,17 +9,20 @@ interface CitationData{
 interface DataVotedType{
     author: string;
     citation: string;
-    
     note: number;
 }
 
 const Citations = ({ data }: CitationData) => {
-    const dataVoted:DataVotedType[] = []
+    const votedContext = useVotedContext();
+    const { voteCitation } = votedContext ?? {};
+    const { votedCitations } = votedContext ?? {};
+
     let newDataVoted:DataVotedType = {author: '', citation: '', note: 0}
 
     const handleContent = (e: React.MouseEvent<HTMLDivElement>) => {
         const author = e.currentTarget.children[0].innerHTML
         const citation = e.currentTarget.children[1].innerHTML
+        
         newDataVoted.author = author
         newDataVoted.citation = citation
         e.currentTarget.style.cursor = 'not-allowed'
@@ -30,10 +33,9 @@ const Citations = ({ data }: CitationData) => {
         const note = Number(e.currentTarget.innerHTML)
         newDataVoted.note = note
         e.currentTarget.style.backgroundColor = 'green'
-        console.log(newDataVoted)
-        if(dataVoted.includes(newDataVoted.citation)) return
-        dataVoted.push(newDataVoted)
-        console.log(dataVoted)
+        if(voteCitation !== undefined && !verifyCitationEqual(newDataVoted.citation)){
+            voteCitation({author: newDataVoted.author, citation: newDataVoted.citation, note: newDataVoted.note})
+        }
     }
     
     const handleDivButtons = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -44,6 +46,10 @@ const Citations = ({ data }: CitationData) => {
                 element.id = 'btn-disabled'
             })
         }
+    }
+
+    const verifyCitationEqual = (newCitation: string) => {
+        return votedCitations.find(objCitation => objCitation.citation === newCitation)
     }
     
     return(

@@ -1,0 +1,30 @@
+.container-voted{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.container-citation{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100px;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin: 16px 0;
+    font-size: 18px;
+    background-color: orange;
+    border-radius: 16px;
+}
+
+.note-citation{
+    display: flex;
+    justify-content: space-around;
+    width: 90px;
+    padding: 4px 4px; 
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 4px;
+    background-color: red;
+}
