@@ -1,15 +1,23 @@
 import { useVotedContext } from "../../context/VotedContext"
 import './style.css'
 
+interface objProps{
+    note: number
+}
+
 const Voted = () => {
     const votedContext = useVotedContext();
     const { votedCitations } = votedContext ?? {};
+
+    const compairNotes = (a: objProps, b:objProps) => b.note - a.note
+
+    const votedOrdered = votedCitations.sort(compairNotes)
 
     return(
         <div className="container-voted">
             <h1>Votados:</h1>
             {votedCitations.length > 0 ? (
-                votedCitations?.map((citation) => (
+                votedOrdered?.map((citation) => (
                     <div key={citation.author} className="container-citation">
                         <p> <span>Autor: </span> {citation.author}</p>
                         <p> <span>Citação: </span> {citation.citation}</p>
