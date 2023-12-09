@@ -3,7 +3,7 @@ import './style.css'
 import { useVotedContext } from '../../context/VotedContext';
 
 interface CitationData{
-    data: { author: string; citation: string; }[];
+    data: { author: string; text: string; }[];
 }
 
 interface DataVotedType{
@@ -55,10 +55,10 @@ const Citations = ({ data }: CitationData) => {
     return(
         <>
         <h6>Selecione o quadro para votar</h6>
-            {data.map(({author, citation}, index) => (
+            {data.map(({author, text}, index) => (
                 <div key={index} className='citation-container' onClick={handleContent}>
                     <p>{author}</p>
-                    <p>{citation}</p>
+                    <p>{text}</p>
                     <h3>Nota:</h3>
                     <Button onClick={handleNote} onClick2={handleDivButtons}/>
                 </div>
