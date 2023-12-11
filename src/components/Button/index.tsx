@@ -3,12 +3,11 @@ import './style.css'
 
 interface PropsButtons{
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
-    onClick2: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-const Button: React.FC<PropsButtons> = ({ onClick, onClick2 }) => {
+const Button: React.FC<PropsButtons> = ({ onClick }) => {
     return(
-        <div className='section-notes' onClick={onClick2}>
+        <div className='section-notes'>
             <button onClick={onClick}>1</button>
             <button onClick={onClick}>2</button>
             <button onClick={onClick}>3</button>

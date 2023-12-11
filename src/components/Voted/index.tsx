@@ -18,7 +18,7 @@ const Voted = () => {
             <h1>Votados:</h1>
             {votedCitations.length > 0 ? (
                 votedOrdered?.map((citation) => (
-                    <div key={citation.author} className="container-citation">
+                    <div key={citation.citation} className="container-citation">
                         <p> <span>Autor: </span> {citation.author}</p>
                         <p> <span>Citação: </span> {citation.citation}</p>
                         <p className="note-citation"> Nota: <span>{citation.note}</span></p>

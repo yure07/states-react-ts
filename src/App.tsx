@@ -12,8 +12,8 @@ const App = () => {
     const getApi = async () => {
       try{
           const response = await fetch('https://type.fit/api/quotes')
-          const data = await response.json()
-          setData(data)
+          const citations = await response.json()
+          setData(citations)
         }
         catch (error){
           console.log('error:', error)

@@ -1,6 +1,7 @@
 import Button from '../Button';
 import './style.css'
 import { useVotedContext } from '../../context/VotedContext';
+import { useRef, useState } from 'react';
 
 interface CitationData{
     data: { author: string; text: string; }[];
@@ -16,6 +17,8 @@ const Citations = ({ data }: CitationData) => {
     const votedContext = useVotedContext();
     const { voteCitation } = votedContext ?? {};
     const { votedCitations } = votedContext ?? {};
+    const [hideCitation, setHideCitation] = useState<string[]>([])
+    const citationRef = useRef<HTMLDivElement>(null)
 
     let newDataVoted:DataVotedType = {author: '', citation: '', note: 0}
 
@@ -25,7 +28,6 @@ const Citations = ({ data }: CitationData) => {
         
         newDataVoted.author = author
         newDataVoted.citation = citation
-        e.currentTarget.style.cursor = 'not-allowed'
         e.currentTarget.style.opacity = '1'
     }
 
@@ -36,16 +38,7 @@ const Citations = ({ data }: CitationData) => {
         if(voteCitation !== undefined && !verifyCitationEqual(newDataVoted.citation)){
             voteCitation({author: newDataVoted.author, citation: newDataVoted.citation, note: newDataVoted.note})
         }
-    }
-    
-    const handleDivButtons = (e: React.MouseEvent<HTMLDivElement>) => {
-        const divElement = e.currentTarget;
-        
-        if (divElement) {
-            divElement.querySelectorAll('*').forEach((element) => {
-                element.id = 'btn-disabled'
-            })
-        }
+        setHideCitation((prevHiddenDivs) => [...prevHiddenDivs, newDataVoted.citation]);
     }
 
     const verifyCitationEqual = (newCitation: string) => {
@@ -56,11 +49,16 @@ const Citations = ({ data }: CitationData) => {
         <>
         <h6>Selecione o quadro para votar</h6>
             {data.map(({author, text}, index) => (
-                <div key={index} className='citation-container' onClick={handleContent}>
+                <div
+                key={index}
+                className={`citation-container ${hideCitation.includes(text) ? 'hidden' : ''}`}
+                onClick={handleContent}
+                ref={citationRef}
+              >
                     <p>{author}</p>
                     <p>{text}</p>
                     <h3>Nota:</h3>
-                    <Button onClick={handleNote} onClick2={handleDivButtons}/>
+                    <Button onClick={handleNote}/>
                 </div>
             ))}
         </>

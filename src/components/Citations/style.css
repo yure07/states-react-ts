@@ -18,6 +18,10 @@ h6{
     opacity: 0.5;
 }
 
+.hidden{
+    display: none;
+}
+
 .citation-container > p{
     color: #fff;
     font-weight: bold;
