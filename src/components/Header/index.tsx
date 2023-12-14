@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react'
-import './style.css'
+import styles from './header.module.sass'
 
 interface buttonType{
     onClick: (e: MouseEvent<HTMLButtonElement>) => void
@@ -7,7 +7,7 @@ interface buttonType{
 
 const Header: React.FC<buttonType> = ({onClick}) => {
     return(
-        <header className='header-container'>
+        <header className={styles.headerContainer}>
             <h1>Bem-vindo</h1>
             <button onClick={onClick}>Iniciar votação</button>
         </header>   

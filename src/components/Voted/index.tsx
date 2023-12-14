@@ -1,5 +1,5 @@
 import { useVotedContext } from "../../context/VotedContext"
-import './style.css'
+import styles from './style.module.sass'
 
 interface objProps{
     note: number
@@ -14,14 +14,14 @@ const Voted = () => {
     const votedOrdered = votedCitations.sort(compairNotes)
 
     return(
-        <div className="container-voted">
+        <div className={styles.containerVoted}>
             <h1>Votados:</h1>
             {votedCitations.length > 0 ? (
                 votedOrdered?.map((citation) => (
-                    <div key={citation.citation} className="container-citation">
+                    <div key={citation.citation} className={styles.containerCitation}>
                         <p> <span>Autor: </span> {citation.author}</p>
                         <p> <span>Citação: </span> {citation.citation}</p>
-                        <p className="note-citation"> Nota: <span>{citation.note}</span></p>
+                        <p className={styles.noteCitation}> Nota: <span>{citation.note}</span></p>
                     </div>
                 ))
             ) : (

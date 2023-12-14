@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import styles from './style.module.sass'
 
 interface PropsButtons{
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
@@ -7,7 +7,7 @@ interface PropsButtons{
 
 const Button: React.FC<PropsButtons> = ({ onClick }) => {
     return(
-        <div className='section-notes'>
+        <div className={styles.sectionNotes}>
             <button onClick={onClick}>1</button>
             <button onClick={onClick}>2</button>
             <button onClick={onClick}>3</button>

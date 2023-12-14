@@ -1,5 +1,5 @@
 import Button from '../Button';
-import './style.css'
+import styles from './style.module.sass';
 import { useVotedContext } from '../../context/VotedContext';
 import { useRef, useState } from 'react';
 
@@ -51,7 +51,7 @@ const Citations = ({ data }: CitationData) => {
             {data.map(({author, text}, index) => (
                 <div
                 key={index}
-                className={`citation-container ${hideCitation.includes(text) ? 'hidden' : ''}`}
+                className={`${styles.citationContainer} ${hideCitation.includes(text) ? styles.hidden : ''}`}
                 onClick={handleContent}
                 ref={citationRef}
               >
