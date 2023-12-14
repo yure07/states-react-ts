@@ -11,6 +11,8 @@ da a citação de maior nota para menor nota.
 - React
 - React Hooks (useState, useContext)
 - Typescript
+- CSS Modules
+- Sass
 
 ## Executar projeto
 Clone esse repositório na sua máquina e no diretório aplique o seguinte código npm
