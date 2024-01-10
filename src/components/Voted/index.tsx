@@ -1,4 +1,4 @@
-import { useVotedContext } from "../../context/VotedContext"
+import { useVotedContext } from '../../context/VotedContext';
 import styles from './style.module.sass'
 
 interface objProps{
@@ -18,7 +18,10 @@ const Voted = () => {
             <h1>Votados:</h1>
             {votedCitations.length > 0 ? (
                 votedOrdered?.map((citation) => (
-                    <div key={citation.citation} className={styles.containerCitation}>
+                    <div 
+                      key={citation.citation} 
+                      className={styles.containerCitation} 
+                      data-testid='citation-voted'>
                         <p> <span>Autor: </span> {citation.author}</p>
                         <p> <span>Citação: </span> {citation.citation}</p>
                         <p className={styles.noteCitation}> Nota: <span>{citation.note}</span></p>

@@ -5,7 +5,7 @@ interface PropsButtons{
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button: React.FC<PropsButtons> = ({ onClick }) => {
+const Buttons: React.FC<PropsButtons> = ({ onClick }) => {
     return(
         <div className={styles.sectionNotes}>
             <button onClick={onClick}>1</button>
@@ -22,4 +22,4 @@ const Button: React.FC<PropsButtons> = ({ onClick }) => {
     )
 }
 
-export default Button
+export default Buttons

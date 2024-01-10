@@ -1,4 +1,4 @@
-import Button from '../Button';
+import Buttons from '../Button';
 import styles from './style.module.sass';
 import { useVotedContext } from '../../context/VotedContext';
 import { useRef, useState } from 'react';
@@ -13,7 +13,7 @@ interface DataVotedType{
     note: number;
 }
 
-const Citations = ({ data }: CitationData) => {
+const Citations:React.FC<CitationData> = ({ data }) => {
     const votedContext = useVotedContext();
     const { voteCitation } = votedContext ?? {};
     const { votedCitations } = votedContext ?? {};
@@ -47,8 +47,8 @@ const Citations = ({ data }: CitationData) => {
     
     return(
         <>
-        <h6>Selecione o quadro para votar</h6>
-            {data.map(({author, text}, index) => (
+        <h6 data-testid='text-select-board'>Selecione o quadro para votar</h6>
+            {data.map && data.map(({author, text}, index) => (
                 <div
                 key={index}
                 className={`${styles.citationContainer} ${hideCitation.includes(text) ? styles.hidden : ''}`}
@@ -58,7 +58,7 @@ const Citations = ({ data }: CitationData) => {
                     <p>{author}</p>
                     <p>{text}</p>
                     <h3>Nota:</h3>
-                    <Button onClick={handleNote}/>
+                    <Buttons onClick={handleNote}/>
                 </div>
             ))}
         </>
